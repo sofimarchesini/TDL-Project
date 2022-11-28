@@ -2,7 +2,7 @@ defmodule Home.PersistentSubastas do
   defmacro __using__(_) do
     quote do
       use GenServer
-      alias TpSubastas.Subasta
+      alias SubastasServer.Subasta
 
       def start_link(opts \\ []) do
         GenServer.start_link(__MODULE__, :ok, opts)
@@ -47,14 +47,14 @@ defmodule Home.PersistentSubastas do
       end
 
       def handle_call({ :get_all }, _from, _state) do
-        all = TpSubastas.Repo.all(Subasta)
+        all = Subastas.Repo.all(Subasta)
         allMaps = Enum.map all, fn(it) -> Map.from_struct it end
 
         { :reply, allMaps, _state }
       end
 
       def handle_call({ :get_all, ids}, _from, _state) do
-        all = TpSubastas.Repo.all(Subasta)
+        all = Subastas.Repo.all(Subasta)
         allMaps = Enum.map fn(it) -> Map.from_struct it end
         requiredIds = Enum.filter allMaps, fn(it) ->
           Enum.member? ids, it[:id]
@@ -64,37 +64,37 @@ defmodule Home.PersistentSubastas do
       end
 
       def handle_call({ :get, id_subasta }, _from, _state) do
-        struct = TpSubastas.Repo.get!(Subasta, id_subasta)
+        struct = Subastas.Repo.get!(Subasta, id_subasta)
         { :reply, Map.from_struct(struct), _state }
       end
 
       def handle_call({ :insert, datos_subasta }, _from, _state) do
         changeset = Subasta.changeset(%Subasta{}, datos_subasta)
-        { :ok, struct } = TpSubastas.Repo.insert(changeset)
+        { :ok, struct } = Subastas.Repo.insert(changeset)
         result = Map.from_struct struct
 
         { :reply, result[:id], _state }
       end
 
       def handle_call({ :update, id_subasta, datos_subasta }, _from, _state) do
-        subasta = TpSubastas.Repo.get!(Subasta, id_subasta)
+        subasta = Subastas.Repo.get!(Subasta, id_subasta)
 
         changeset = Subasta.changeset(subasta, datos_subasta)
-        TpSubastas.Repo.update(changeset)
+        Subastas.Repo.update(changeset)
 
         { :reply, :ok, _state }
       end
 
       def handle_call({ :delete, id_subasta }, _from, _state) do
-        subasta = TpSubastas.Repo.get!(Subasta, id_subasta)
-        TpSubastas.Repo.delete!(subasta)
+        subasta = Subastas.Repo.get!(Subasta, id_subasta)
+        Subastas.Repo.delete!(subasta)
 
         { :reply, :ok, _state }
       end
 
       def handle_call({ :clean }, _from, _state) do
-        all = TpSubastas.Repo.all(Subasta)
-        Enum.each all, fn(it) -> TpSubastas.Repo.delete!(it) end
+        all = Subastas.Repo.all(Subasta)
+        Enum.each all, fn(it) -> Subastas.Repo.delete!(it) end
 
         { :reply, :ok, _state }
       end

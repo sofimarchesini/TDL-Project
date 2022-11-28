@@ -1,5 +1,5 @@
-defmodule IascTpSubastas.Subasta do
-  use IascTpSubastas.Web, :model
+defmodule Subastas.Subasta do
+  use Subastas.Web, :model
 
   schema "subastas" do
     @primary_key { :id, :binary_id, autogenerate: true }

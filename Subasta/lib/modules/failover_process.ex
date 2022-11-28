@@ -12,11 +12,10 @@ defmodule FailoverProcess do
       if(Node.ping(:"#{server}") == :pang) do
         IO.puts "Server down! Taking over"
         Application.stop(:phoenix)
-        Application.stop(:iasc_tp_subastas)
+        Application.stop(:subastas)
 
         Application.start(:phoenix)
-        Application.start(:iasc_tp_subastas)
-        failover_mode = false
+        Application.start(:subastas)
       end
     end
 

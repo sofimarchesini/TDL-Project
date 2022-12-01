@@ -1,5 +1,5 @@
 defmodule Subasta.SubastaController
-    use Subasta.app, :Controllers
+    use Subasta.Web, :Controllers
 
     alias Subasta.Subasta
 

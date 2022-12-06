@@ -1,12 +1,12 @@
-defmodule IascTpSubastas.SubastaView do
-  use IascTpSubastas.Web, :view
+defmodule Subasta.SubastaView do
+  use Subasta.Web, :view
 
   def render("index.json", %{subastas: subastas}) do
-    %{data: render_many(subastas, IascTpSubastas.SubastaView, "subasta.json")}
+    %{data: render_many(subastas, Subasta.SubastaView, "subasta.json")}
   end
 
   def render("show.json", %{subasta: subasta}) do
-    %{data: render_one(subasta, IascTpSubastas.SubastaView, "subasta.json")}
+    %{data: render_one(subasta, Subasta.SubastaView, "subasta.json")}
   end
 
   def render("subasta.json", %{subasta: subasta}) do

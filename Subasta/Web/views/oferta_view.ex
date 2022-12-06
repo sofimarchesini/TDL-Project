@@ -1,5 +1,5 @@
-defmodule IascTpSubastas.OfertaView do
-  use IascTpSubastas.Web, :view
+defmodule Subasta.OfertaView do
+  use Subasta.Web, :view
 
   def render("oferta.json", %{oferta: {id_oferta}}) do
     id_oferta

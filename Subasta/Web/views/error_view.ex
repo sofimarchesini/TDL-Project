@@ -1,5 +1,5 @@
-defmodule IascTpSubastas.ErrorView do
-  use IascTpSubastas.Web, :view
+defmodule Subasta.ErrorView do
+  use Subasta.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

@@ -1,4 +1,4 @@
-defmodule IascTpSubastas do
+defmodule Subasta do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -30,7 +30,7 @@ defmodule IascTpSubastas do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    IascTpSubastas.Endpoint.config_change(changed, removed)
+    Subasta.Endpoint.config_change(changed, removed)
     :ok
   end
 
@@ -39,9 +39,9 @@ defmodule IascTpSubastas do
 
     children = [
       # Start the endpoint when the application starts
-      supervisor(IascTpSubastas.Endpoint, []),
+      supervisor(Subasta.Endpoint, []),
       # Start the Ecto repository
-      worker(IascTpSubastas.Repo, []),
+      worker(Subasta.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(IascTpSubastas.Worker, [arg1, arg2, arg3]),
 

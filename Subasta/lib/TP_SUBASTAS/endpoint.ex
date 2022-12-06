@@ -1,7 +1,7 @@
-defmodule IascTpSubastas.Endpoint do
-  use Phoenix.Endpoint, otp_app: :iasc_tp_subastas
+defmodule TpSubastas.Endpoint do
+  use Phoenix.Endpoint, otp_app: :tp_subastas
 
-  socket("/socket", IascTpSubastas.UserSocket)
+  socket("/socket", TpSubastas.UserSocket)
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -9,7 +9,7 @@ defmodule IascTpSubastas.Endpoint do
   # when deploying your static files in production.
   plug(Plug.Static,
     at: "/",
-    from: :iasc_tp_subastas,
+    from: :tp_subastas,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
   )
@@ -36,9 +36,9 @@ defmodule IascTpSubastas.Endpoint do
 
   plug(Plug.Session,
     store: :cookie,
-    key: "_iasc_tp_subastas_key",
+    key: "_tp_subastas_key",
     signing_salt: "3fxCKsXc"
   )
 
-  plug(IascTpSubastas.Router)
+  plug(TpSubastas.Router)
 end

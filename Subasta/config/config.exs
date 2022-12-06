@@ -6,12 +6,12 @@
 use Mix.Config
 
 # Configures the endpoint
-config :iasc_tp_subastas, IascTpSubastas.Endpoint,
+config :subasta, Subasta.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "ROgkyjt38pqw8bzk4h54OeOfVz4djWUss77VkY7DtqDSLRLbRziHD9EUxlmifDxy",
   render_errors: [accepts: ~w(html json)],
-  pubsub: [name: IascTpSubastas.PubSub,
+  pubsub: [name: Subasta.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

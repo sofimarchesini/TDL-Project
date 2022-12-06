@@ -1,3 +1,3 @@
-defmodule IascTpSubastas.LayoutView do
-  use IascTpSubastas.Web, :view
+defmodule Subasta.LayoutView do
+  use Subasta.Web, :view
 end

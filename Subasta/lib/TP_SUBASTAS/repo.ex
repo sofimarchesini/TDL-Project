@@ -1,3 +1,3 @@
-defmodule IascTpSubastas.Repo do
-  use Ecto.Repo, otp_app: :iasc_tp_subastas
+defmodule Subasta.Repo do
+  use Ecto.Repo, otp_app: :subasta
 end

@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :iasc_tp_subastas, IascTpSubastas.Endpoint,
+config :subasta, Subasta.Endpoint,
   http: [port: 4001],
   server: false
 
@@ -10,7 +10,7 @@ config :iasc_tp_subastas, IascTpSubastas.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :iasc_tp_subastas, IascTpSubastas.Repo,
+config :subasta, Subasta.Repo,
   adapter: Mongo.Ecto,
-  database: "iasc_tp_subastas_test",
+  database: "subasta_test",
   pool_size: 1

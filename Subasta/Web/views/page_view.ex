@@ -1,3 +1,3 @@
-defmodule IascTpSubastas.PageView do
-  use IascTpSubastas.Web, :view
+defmodule Subasta.PageView do
+  use Subasta.Web, :view
 end

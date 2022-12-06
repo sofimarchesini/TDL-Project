@@ -1,5 +1,5 @@
-defmodule IascTpSubastas.ChangesetView do
-  use IascTpSubastas.Web, :view
+defmodule Subasta.ChangesetView do
+  use Subasta.Web, :view
 
   def render("error.json", %{changeset: changeset}) do
     # When encoded, the changeset returns its errors

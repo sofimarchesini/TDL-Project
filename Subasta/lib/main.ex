@@ -43,7 +43,7 @@ defmodule Subasta do
       # Start the Ecto repository
       worker(Subasta.Repo, []),
       # Here you could define other workers and supervisors as children
-      # worker(IascTpSubastas.Worker, [arg1, arg2, arg3]),
+      # worker(Subasta.Worker, [arg1, arg2, arg3]),
 
       worker(SubasteroServer, [[name: {:global, GlobalSubastero}]], restart: :transient),
       worker(SubastasHome, [[name: {:global, GlobalSubastasHome}]], restart: :transient),
@@ -52,7 +52,7 @@ defmodule Subasta do
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: IascTpSubastas.Supervisor]
+    opts = [strategy: :one_for_one, name: Subasta.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

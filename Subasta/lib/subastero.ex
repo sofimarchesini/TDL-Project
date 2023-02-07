@@ -16,10 +16,6 @@ defmodule Subastero do
     SubasteroServer.cancelar_subasta({:global, GlobalSubastero}, id_subasta)
   end
 
-  # def terminar_subasta(id_subasta) do
-  #   SubasteroServer.terminar_subasta({:global, GlobalSubastero}, id_subasta)
-  # end
-
   def obtener_subasta(id_subasta) do
     SubasteroServer.obtener_subasta({:global, GlobalSubastero}, id_subasta)
   end

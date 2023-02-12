@@ -1,5 +1,5 @@
 # TP Teoría del Lenguaje
-## Aplicación de Subastas
+## Aplicación de Subasta
 
 ### Grupo: Terror en tiempo de Ejecución
 ### Alumnos: 

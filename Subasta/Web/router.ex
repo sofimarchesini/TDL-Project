@@ -18,7 +18,7 @@ defmodule Subasta.Router do
 
     get "/", PageController, :index
 
-    resources "/subastas", SubastaController, except: [:new, :edit]
+    resources "/subasta", SubastaController, except: [:new, :edit]
     resources "/ofertas", OfertaController, only: [:create]
   end
 

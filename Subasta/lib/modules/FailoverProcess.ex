@@ -12,10 +12,10 @@ defmodule FailoverProcess do
       if(Node.ping(:"#{server}") == :pang) do
         IO.puts "Server down! Taking over"
         Application.stop(:phoenix)
-        Application.stop(:subastas)
+        Application.stop(:subasta)
 
         Application.start(:phoenix)
-        Application.start(:subastas)
+        Application.start(:subasta)
       end
     end
 

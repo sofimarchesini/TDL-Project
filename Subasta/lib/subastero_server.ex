@@ -237,8 +237,8 @@ defmodule SubasteroServer do
   ###
 
   def handle_call({ :listar_subastas }, _from, { subastasHome, compradoresHome, controladores }) do
-    subastas = SubastasHome.get_all subastasHome
-    { :reply, subastas, { subastasHome, compradoresHome, controladores } }
+    subasta = SubastasHome.get_all subastasHome
+    { :reply, subasta, { subastasHome, compradoresHome, controladores } }
   end
 
   def handle_cast({ :matate }, _state) do

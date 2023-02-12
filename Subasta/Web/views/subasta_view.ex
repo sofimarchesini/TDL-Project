@@ -1,8 +1,8 @@
 defmodule Subasta.SubastaView do
   use Subasta.Web, :view
 
-  def render("index.json", %{subastas: subastas}) do
-    %{data: render_many(subastas, Subasta.SubastaView, "subasta.json")}
+  def render("index.json", %{subasta: subasta}) do
+    %{data: render_many(subasta, Subasta.SubastaView, "subasta.json")}
   end
 
   def render("show.json", %{subasta: subasta}) do

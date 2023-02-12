@@ -1,7 +1,7 @@
-defmodule Subastas.Subasta do
-  use Subastas.Web, :model
+defmodule Subasta.Subasta do
+  use Subasta.Web, :model
 
-  schema "subastas" do
+  schema "subasta" do
     @primary_key { :id, :binary_id, autogenerate: true }
 
     field :titulo, :string

@@ -7,8 +7,8 @@ defmodule Subasta.SubastaController
 
     # LISTAR SUBASTAS
     def index(conn, _params) do
-      subastas = Subastero.listar_subastas
-      render(conn, "index.json", subastas: subastas)
+      subasta = Subastero.listar_subastas
+      render(conn, "index.json", subasta: subasta)
     end
 
     # CREAR SUBASTA

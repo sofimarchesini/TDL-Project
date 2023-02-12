@@ -2,7 +2,7 @@ defmodule Home.PersistentComprador do
   defmacro __using__(_) do
     quote do
       use GenServer
-      alias Subastas.Comprador
+      alias Subasta.Comprador
 
       def start_link(opts \\ []) do
         GenServer.start_link(__MODULE__, :ok, opts)
@@ -47,7 +47,7 @@ defmodule Home.PersistentComprador do
       end
 
       def handle_call({ :get_all }, _from, _state) do
-        all = Subastas.Repo.all(Comprador)
+        all = Subasta.Repo.all(Comprador)
         allMaps = Enum.map all, fn(it) ->
           datos_comprador = Map.from_struct(it)
           rname = String.to_atom datos_comprador[:rname]
@@ -58,7 +58,7 @@ defmodule Home.PersistentComprador do
       end
 
       def handle_call({ :get_all, ids}, _from, _state) do
-        all = Subastas.Repo.all(Comprador)
+        all = Subasta.Repo.all(Comprador)
 
         allMaps = Enum.map all, fn(it) ->
           datos_comprador = Map.from_struct(it)
@@ -73,7 +73,7 @@ defmodule Home.PersistentComprador do
       end
 
       def handle_call({ :get, id_comprador }, _from, _state) do
-        struct = Subastas.Repo.get!(Comprador, id_comprador)
+        struct = Subasta.Repo.get!(Comprador, id_comprador)
         datos_comprador = Map.from_struct(struct)
         rname = String.to_atom datos_comprador[:rname]
         datos_modificados = Map.put datos_comprador, :rname, rname
@@ -87,31 +87,31 @@ defmodule Home.PersistentComprador do
         datos_modificados = Map.put datos_comprador, :rname, rname_str
 
         changeset = Comprador.changeset(%Comprador{}, datos_modificados)
-        { :ok, struct } = Subastas.Repo.insert(changeset)
+        { :ok, struct } = Subasta.Repo.insert(changeset)
         result = Map.from_struct struct
 
         { :reply, result[:id], _state }
       end
 
       def handle_call({ :update, id_comprador, datos_comprador }, _from, _state) do
-        comprador = pSubastas.Repo.get!(Comprador, id_comprador)
+        comprador = Subasta.Repo.get!(Comprador, id_comprador)
 
         changeset = Comprador.changeset(comprador, datos_comprador)
-        Subastas.Repo.update(changeset)
+        Subasta.Repo.update(changeset)
 
         { :reply, :ok, _state }
       end
 
       def handle_call({ :delete, id_comprador }, _from, _state) do
-        comprador = Subastas.Repo.get!(Comprador, id_comprador)
-        Subastas.Repo.delete!(comprador)
+        comprador = Subasta.Repo.get!(Comprador, id_comprador)
+        Subasta.Repo.delete!(comprador)
 
         { :reply, :ok, _state }
       end
 
       def handle_call({ :clean }, _from, _state) do
-        all = Subastas.Repo.all(Comprador)
-        Enum.each all, fn(it) -> Subastas.Repo.delete!(it) end
+        all = Subasta.Repo.all(Comprador)
+        Enum.each all, fn(it) -> Subasta.Repo.delete!(it) end
 
         { :reply, :ok, _state }
       end

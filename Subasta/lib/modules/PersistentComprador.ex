@@ -2,7 +2,7 @@ defmodule Home.PersistentComprador do
   defmacro __using__(_) do
     quote do
       use GenServer
-      alias SubastasServer.Comprador
+      alias Subastas.Comprador
 
       def start_link(opts \\ []) do
         GenServer.start_link(__MODULE__, :ok, opts)
